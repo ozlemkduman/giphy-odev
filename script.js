@@ -1,6 +1,6 @@
 const resultsDOM = document.querySelector(".results");
 const formDOM = document.querySelector(".form");
-const inputDOM = document.getElementsByTagName("input");
+const inputDOM = document.querySelector(".input");
 
 formDOM.addEventListener("submit", getGiphy);
 
@@ -16,18 +16,21 @@ function getGiphy(e) {
     .then((data) => {
       const arrData = data.data;
       arrData.forEach((item) => {
-        console.log(item.title);
         const divItem = document.createElement("div");
-        divItem.className="item"
+        divItem.className = "item";
         resultsDOM.append(divItem);
-        const imgDOM = document.createElement("img");
-        divItem.append(imgDOM);
-        console.log(item);
-        imgDOM.src= item.images.fixed_width.url;
-         
-        console.log(item.title, "eşit", );
-     
+
+        if (item.title.trim() == inputDOM.value.trim()) {
+          const imgDOM = document.createElement("img");
+          const imgTitle = document.createElement("p");
+          divItem.append(imgDOM, imgTitle);
+          imgDOM.src = item.images.fixed_width.url;
+          imgTitle.textContent = item.title;
+        }
+        
+        console.log(item.title);
       });
+      
     })
     .catch((err) => {
       console.log(err);
