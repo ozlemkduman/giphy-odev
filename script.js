@@ -16,21 +16,21 @@ function getGiphy(e) {
     .then((data) => {
       const arrData = data.data;
       arrData.forEach((item) => {
-        const divItem = document.createElement("div");
-        divItem.className = "item";
-        resultsDOM.append(divItem);
-
         if (item.title.trim() == inputDOM.value.trim()) {
+          resultsDOM.innerHTML="";
+          const divItem = document.createElement("div");
+          divItem.className = "item";
+          resultsDOM.append(divItem);
           const imgDOM = document.createElement("img");
           const imgTitle = document.createElement("p");
+          imgTitle.className="imgTitle"
           divItem.append(imgDOM, imgTitle);
           imgDOM.src = item.images.fixed_width.url;
           imgTitle.textContent = item.title;
         }
-        
+
         console.log(item.title);
       });
-      
     })
     .catch((err) => {
       console.log(err);

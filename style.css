@@ -1,12 +1,12 @@
-*{
-box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 .sans {
   font-family: sans-serif;
 }
-.container{
-    display: flex;
-    flex-direction: column;
+.container {
+  display: flex;
+  flex-direction: column;
 }
 .results {
   display: flex;
@@ -15,8 +15,19 @@ box-sizing: border-box;
   width: 100%;
   margin-top: 5;
 }
-.item{
+.item {
   width: 18%;
   height: auto;
   margin: 5px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center ;
+}
+.imgTitle {
+  font-size: 14px;
+  color: black;
+  border: 1px solid #aaaaaa;
+  margin: 5px;
+  text-align: center;
 }
